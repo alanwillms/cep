@@ -22,13 +22,9 @@ crystal build ./src/cep.cr --release
 * Ajuda e opções: `./cep --help`
 * Execução: `./cep start`
 
-## Contributing
+## Benchmarking
 
-1. Fork it ( https://github.com/[your-github-name]/cep/fork )
-2. Create your feature branch (git checkout -b my-new-feature)
-3. Commit your changes (git commit -am 'Add some feature')
-4. Push to the branch (git push origin my-new-feature)
-5. Create a new Pull Request
+Fiz uma análise superficial e não encontrei nenhuma diferença significativa. As duas levaram em torno de 320s em todas as primeiras requisições e 2 a 5ms nas requisições cacheadas.
 
 ## Contributors
 
