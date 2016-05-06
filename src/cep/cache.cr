@@ -1,10 +1,12 @@
 module Cep
   class Cache
+    EXPIRATION_TIME = 500
+
     def initialize(@cep : Cep, @tmpdir : String)
     end
 
     def exists?
-      File.exists? file_name
+      file_exists? && !file_expired?
     end
 
     def set(content)
@@ -18,7 +20,19 @@ module Cep
 
     private def file_name
       ds = File::SEPARATOR_STRING
-      "#{@tmpdir}#{ds}#{@cep.value}.json"
+      "#{@tmpdir}#{ds}cep#{@cep.value}.json"
+    end
+
+    private def file_exists?
+      File.exists? file_name
+    end
+
+    private def file_expired?
+      if File.stat(file_name).mtime + EXPIRATION_TIME.seconds < Time.now
+        File.delete file_name
+        return true
+      end
+      false
     end
   end
 end
