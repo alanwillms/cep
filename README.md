@@ -1,22 +1,26 @@
-# cep
+# CEP
 
-TODO: Write a description here
+Essa é uma reescrita do microserviço [goCep](https://github.com/eminetto/goCep),
+com o objetivo de demonstrar o uso da linguagem de programação
+[Crystal](http://crystal-lang.org/).
 
-## Installation
+## Desenvolvimento
 
+Certifique-se de ter o compilador do Crystal e a LibSSL instalados
+(`apt-get install libssl-dev`).
 
-TODO: Write installation instructions here
+Para compilar, execute o comando:
 
+```
+crystal build ./src/cep.cr --release
+```
 
-## Usage
+(A flag `--release` cria um binário otimizado.)
 
+## Utilização
 
-
-TODO: Write usage instructions here
-
-## Development
-
-TODO: Write development instructions here
+* Ajuda e opções: `./cep --help`
+* Execução: `./cep start`
 
 ## Contributing
 
@@ -28,4 +32,4 @@ TODO: Write development instructions here
 
 ## Contributors
 
-- [[your-github-name]](https://github.com/[your-github-name]) Alan Willms - creator, maintainer
+- [[alanwillms]](https://github.com/[alanwillms]) Alan Willms - creator, maintainer
