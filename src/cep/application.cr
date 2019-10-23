@@ -2,6 +2,9 @@ module Cep
   class Application
     private getter :request, :response, :tempdir
 
+    @cep : Cep | Nil
+    @cache : Cache | Nil
+
     def initialize(@request : HTTP::Request, @response : HTTP::Server::Response, @tempdir : String)
     end
 
@@ -17,7 +20,7 @@ module Cep
       if cache.exists?
         data = cache.get
       else
-        data = Cep::ViaCep.new(cep).get_json
+        data = ViaCep.new(cep).get_json
         cache.set data
       end
 
@@ -35,7 +38,7 @@ module Cep
     end
 
     private def cep
-      @cep ||= Cep::Cep.new(request.path.to_s[1..-1])
+      @cep ||= Cep.new(request.path.to_s[1..-1])
     end
 
     private def cache
