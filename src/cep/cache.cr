@@ -28,7 +28,7 @@ module Cep
     end
 
     private def file_expired?
-      if File.stat(file_name).mtime + EXPIRATION_TIME.seconds < Time.now
+      if File.info(file_name).modification_time + EXPIRATION_TIME.seconds < Time.local
         File.delete file_name
         return true
       end
